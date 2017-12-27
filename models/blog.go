@@ -18,6 +18,7 @@ type Blog struct {
 	Status       int
 	Views        int
 	Imgurl       string
+	Subject      string
 	Createtime   time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
@@ -48,4 +49,8 @@ func BlogGetList(page, pageSize int, filters ...interface{}) ([]*Blog, int64) {
 	query.OrderBy("-id").Limit(pageSize, offset).All(&list)
 
 	return list, total
+}
+
+func BlogAdd(a *Blog) (int64, error) {
+	return orm.NewOrm().Insert(a)
 }

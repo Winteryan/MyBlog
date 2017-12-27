@@ -1,0 +1,108 @@
+{{template "backstage/backstagebase.html" .}}
+{{define "head"}}
+<title>MyBlog</title>
+{{end}}
+{{define "body"}}
+                   
+<body class="sub-page">	
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content" class="single-page">
+		<div class="container">
+			<div class="row">
+				<div id="main-content">
+					<article>
+						<div class="art-content">
+							<div class="row">
+								<div class="col-md-2 box-item">
+									
+								</div>
+								<div class="col-md-8">
+									<h3 style="text-align: center">Add Article</h3>
+									{{if .flash.error}}
+						   				<h5 class="error">提示:{{.flash.error}}</h5>
+						    		{{end}}
+									<form name="form1" method="post" action="/addArticle" enctype="multipart/form-data">
+									<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<input type="text" class="form-control input-lg" name="title" id="title" placeholder="Title" required="required" />
+												</div>
+											</div>
+									</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+												<input type="text" class="form-control input-lg" name="keyword" id="keyword" placeholder="Keyword" required="required" />
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="text" class="form-control input-lg" name="subject" id="subject" placeholder="Subject" required="required" />
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<select class="form-control input-lg" name="catalogid">
+													  <option value="1">工作</option>
+													  <option value="2">生活</option>
+													  <option value="3">技术</option>
+													  <option value="4">文章</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<select class="form-control input-lg" name="type">
+												  <option value="1">原创</option>
+												  <option value="2">转载</option>
+												</select>
+											</div>
+											<div class="col-md-4">
+												<select class="form-control input-lg" name="status">
+												  <option value="1">公开</option>
+												  <option value="2">权限</option>
+												  <option value="3">私人</option>
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+												    <input id="file-0a" placeholder="Images" name="images" class="file" type="file" multiple data-max-file-count="1">
+												</div>		
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<textarea name="introduction" id="introduction" class="form-control" rows="4" cols="25" required="required"
+													placeholder="Introduction" style="height: 90px;"></textarea>
+												</div>	
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<textarea name="content" id="content" class="form-control" rows="4" cols="25" required="required"
+													placeholder="Content" style="height: 190px;"></textarea>
+												</div>						
+												<button type="submit" class="btn btn-primary" name="submitcontact" id="submitcontact" style="width:100%">Submit</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+$("#file-0a").fileinput({
+		showUpload: false
+	});
+</script>
+{{end}}

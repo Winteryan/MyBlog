@@ -1,0 +1,128 @@
+{{template "base/base.html" .}}
+{{define "head"}}
+<title>MyBlog</title>
+{{end}}
+{{define "body"}}
+ <body class="index-page">
+	{{template "base/nav.html" .}}
+	<!-- CAROUSEL -->
+	<div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel" data-interval="4000">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="./static/images/banner1.jpg" alt="...">
+				<!-- Static Header -->
+				<div class="container">
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>Free1 Bootstrap Themes Html5xCss3 dot com</h1>
+						<hr>
+						<p>Nunc eu velit metus. Donec in massa libero. Donec bibendum orci a lorem scelerisque luctus. Aliquam et ante quis erat semper pretium.</p>
+						<a href="" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+					</div>
+				</div><!-- /header-text -->
+				</div>
+			</div>
+			<div class="item">
+				<img src="./static/images/banner2.jpg" alt="...">
+				<!-- Static Header -->
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>Free2 Bootstrap Themes Html5xCss3 dot com</h1>
+						<hr>
+						<p>Suspendisse porttitor sapien ac lectus euismod imperdiet. Curabitur nec nibh at massa pellentesque accumsan eu id nibh. Donec accumsan ut mi.</p>
+						<a href="" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+					</div>
+				</div><!-- /header-text -->
+			</div>
+			<div class="item">
+				<img src="./static/images/banner3.jpg" alt="...">
+				<!-- Static Header -->
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>Free3 Bootstrap Themes Html5xCss3 dot com</h1>
+						<hr>
+						<p>Suspendisse porttitor sapien ac lectus euismod imperdiet. Curabitur nec nibh at massa pellentesque accumsan eu id nibh. Donec accumsan ut mi.</p>
+						<a href="" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+					</div>
+				</div><!-- /header-text -->
+			</div>
+			<div class="item">
+				<img src="./static/images/banner4.jpg" alt="...">
+				<!-- Static Header -->
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>Free4 Bootstrap Themes Html5xCss3 dot com</h1>
+						<hr>
+						<p>Suspendisse porttitor sapien ac lectus euismod imperdiet. Curabitur nec nibh at massa pellentesque accumsan eu id nibh. Donec accumsan ut mi.</p>
+						<a href="" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+					</div>
+				</div><!-- /header-text -->
+			</div>
+			
+		</div>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div> <!-- Carousel -->
+	{{template "base/welcome.html" .}}
+    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+	
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content">
+	
+		<!-- ////////////Content Box 01 -->
+		<section class="box-content box-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						{{range .List1}}
+						<div class="box-item">
+							<img src="./static/images/1.jpg" class="img-responsive"/>
+							<div class="content">
+								<h3>{{.Title}}</h3>
+								<p>Suspendisse porttitor sapien ac lectus euismod imperdiet. Curabitur nec nibh at massa pellentesque accumsan eu id nibh. Donec accumsan ut mi et tincidunt. Aliquam eget metus nec leo tempor bibendum. Phasellus tincidunt lobortis metus. Duis euismod lorem turpis at diam.</p>
+								<a href="single.html">Read More...</a>
+								<br><br>
+								<span>MAY 21, 2014 BY VAFPRESS _________{{$.Total}}</span><br>
+							</div>
+						</div>
+						{{end}}
+					</div>
+					<div class="col-md-4">
+						{{range .List2}}
+						<div class="box-item">
+							<img src="./static/images/1.jpg" class="img-responsive"/>
+							<div class="content">
+								<h3>{{.Title}}</h3>
+								<p>Suspendisse porttitor sapien ac lectus euismod imperdiet. Curabitur nec nibh at massa pellentesque accumsan eu id nibh. Donec accumsan ut mi et tincidunt. Aliquam eget metus nec leo tempor bibendum. Phasellus tincidunt lobortis metus. Duis euismod lorem turpis at diam.</p>
+								<a href="single.html">Read More...</a>
+								<br><br>
+								<span>MAY 21, 2014 BY VAFPRESS _________{{$.Total}}</span><br>
+							</div>
+						</div>
+						{{end}}
+					</div>
+					<div class="col-md-4">
+						{{range .List3}}
+						<div class="box-item">
+							<img src="./static/images/1.jpg" class="img-responsive"/>
+							<div class="content">
+								<h3>{{.Title}}</h3>
+								<p>Suspendisse porttitor sapien ac lectus euismod imperdiet. Curabitur nec nibh at massa pellentesque accumsan eu id nibh. Donec accumsan ut mi et tincidunt. Aliquam eget metus nec leo tempor bibendum. Phasellus tincidunt lobortis metus. Duis euismod lorem turpis at diam.</p>
+								<a href="single.html">Read More...</a>
+								<br><br>
+								<span>MAY 21, 2014 BY VAFPRESS _________{{$.Total}}</span><br>
+							</div>
+						</div>
+						{{end}}
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+{{end}}
