@@ -80,3 +80,8 @@ func (self *BaseController) redirect(url string) {
 func (self *BaseController) isPost() bool {
 	return self.Ctx.Request.Method == "POST"
 }
+
+// 是否GET提交
+func (self *BaseController) isGet() bool {
+	return self.Ctx.Request.Method == "GET"
+}

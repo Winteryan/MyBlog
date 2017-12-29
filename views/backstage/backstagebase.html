@@ -1,8 +1,164 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		{{template "backstage/backstagehead.html" .}}
-		{{template "head" .}}
-	</head>
-		{{template "body" .}}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>MyBlog</title>
+
+    <!-- Bootstrap CSS -->    
+    <link href="./static/backstage/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+<!--    <link href="./static/backstage/css/bootstrap-theme.css" rel="stylesheet">-->
+    <!--external css-->
+    <!-- font icon -->
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./static/backstage/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="./static/backstage/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="./static/backstage/css/style.css" rel="stylesheet">
+    <link href="./static/backstage/css/style-responsive.css" rel="stylesheet" />
+    <link href="./static/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+    <script>window.jQuery || document.write('<script src="./static/js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script src="./static/js/fileinput.js" type="text/javascript"></script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="./static/css/default.css">
+	<link rel="stylesheet" href="./static/home/css/style.css">
+  </head>
+
+  <body>
+  <!-- container section start -->
+  <section id="container" class="">
+      <!--header start-->
+      
+      <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+            </div>
+
+            <!--logo start-->
+            <a href="index.html" class="logo">My <span class="lite">Blog</span></a>
+            <!--logo end-->
+
+            <div class="nav search-row" id="top_menu">
+                <!--  search form start -->
+                <ul class="nav top-menu">                    
+                    <li>
+                        <form class="navbar-form">
+                            <input class="form-control" placeholder="Search" type="text">
+                        </form>
+                    </li>                    
+                </ul>
+                <!--  search form end -->                
+            </div>
+			
+      </header>      
+      <!--header end-->
+
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">                
+                  <li class="">
+                      <a class="" href="/backstage">
+                          <i class="icon_house_alt"></i>
+                          <span>Dashboard</span>
+                      </a>
+                  </li>
+				<li class="sub-menu ">
+                      <a href="javascript:;" class="">
+                          <i class="icon_documents_alt"></i>
+                          <span>BLOG</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">                          
+                          <li><a class="" href="/addArticle">ADD</a></li>
+                          <li><a class="" href="/listArticle?page=1"><span>LIST</span></a></li>
+                          <!--<li><a class="active" href="blank.html">#</a></li>
+                          <li><a class="" href="404.html">#</a></li>-->
+                      </ul>
+                  </li>
+				  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_document_alt"></i>
+                          <span>#</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="form_component.html">#</a></li>                          
+                          <li><a class="" href="form_validation.html">#</a></li>
+                      </ul>
+                  </li>       
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_desktop"></i>
+                          <span>#</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="general.html">#</a></li>
+                          <li><a class="" href="buttons.html">#</a></li>
+                          <li><a class="" href="grids.html">#</a></li>
+                      </ul>
+                  </li>
+                  <li>
+                      <a class="" href="widgets.html">
+                          <i class="icon_genius"></i>
+                          <span>#</span>
+                      </a>
+                  </li>
+                  <li>                     
+                      <a class="" href="chart-chartjs.html">
+                          <i class="icon_piechart"></i>
+                          <span>#</span>
+                          
+                      </a>
+                                         
+                  </li>
+                             
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_table"></i>
+                          <span>#</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="basic_table.html">#</a></li>
+                      </ul>
+                  </li>
+                  
+                  
+                  
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+	
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+			{{template "bread" .}}
+            {{template "body" .}}
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+  <!-- container section end -->
+    <!-- javascripts -->
+    <script src="./static/backstage/js/jquery.js"></script>
+    <script src="./static/backstage/js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="./static/backstage/js/jquery.scrollTo.min.js"></script>
+    <script src="./static/backstage/js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
+    <script src="./static/backstage/js/scripts.js"></script>
+
+
+  </body>
 </html>

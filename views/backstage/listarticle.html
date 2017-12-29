@@ -1,0 +1,88 @@
+{{template "backstage/backstagebase.html" .}}
+{{define "bread"}}
+	<div class="row">
+		<div class="col-lg-12">
+			<ol style="background-color: #dcdcdc" class="breadcrumb">
+				<li><i class="fa fa-home"></i><a href="index.html">HOME</a></li>
+				<li><i class="fa fa-bars"></i>BLOG</li>
+				<li><i class="fa fa-square-o"></i>LIST</li>
+			</ol>
+		</div>
+	</div>
+{{end}}
+{{define "body"}}
+<table class="table table-bordered">
+	{{if .flash.error}}
+		<h5 class="error">提示:{{.flash.error}}</h5>
+	{{end}}
+	<thead>
+		<tr>
+			<th>INDEX</th>
+			<th>TITLE</th>
+			<th>KEYWORDS</th>
+			<th>SUBJECT</th>
+			<th>INTRODUCTION</th>
+			<th>STATUS</th>
+			<th>CATALOG</th>
+			<th>TYPE</th>
+			<th>CREATEDATE</th>
+			<th>LASTUPDATE</th>
+			<th>OPERATION</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{range $index, $elem := .List}}
+		<tr>
+			<td>{{$index}}</td>
+			<td>{{$elem.Title}}</td>
+			<td>{{$elem.Keywords}}</td>
+			<td>{{$elem.Introduction}}</td>
+			<td>{{$elem.Subject}}</td>
+			<td>{{$elem.Status}}</td>
+			<td>{{$elem.Catalogid}}</td>
+			<td>{{$elem.Type}}</td>
+			<td>{{$elem.Createtime}}</td>
+			<td>{{$elem.Lastupdate}}</td>
+			<td>
+                <div class="btn-group">
+					<a class="btn btn-primary" href="/lookArticle?id="><i class=" icon_search"></i><p class = "idnum" style="display:none">{{$elem.Id}}</p></a>
+                    <a class="btn btn-primary" href="/updateArticle?id="><i class="icon_pencil-edit"></i><p class = "idnum" style="display:none">{{$elem.Id}}</p></a>
+                    <a class="btn btn-danger" href="/deleteArticle?id="><i class="icon_close_alt2"></i><p class = "idnum" style="display:none">{{$elem.Id}}</p></a>
+				</div>
+            </td>
+			
+		</tr>
+	{{end}}
+	</tbody>
+</table>
+<ul class="pagination">
+	<li><a href="#">&laquo;</a></li>
+	{{range .Pages}}
+	<li class="current">{{.}}</li>
+	{{end}}
+	<li><a href="#">&raquo;</a></li>
+</ul>
+<script>
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+$(document).ready(function(){
+	var page = getUrlParam("page");
+  	$(".current").each(function(){
+		if($(this).text()==page){
+			$(this).addClass("active");
+		}
+		if(page==null){
+			if($(this).text()=="1"){
+				$(this).addClass("active");
+			}
+		}
+	});
+	$(".btn").each(function(){
+		 $(this).attr("href",$(this).attr("href")+$(this).children("p.idnum").text()); 	
+	});
+});
+</script>
+{{end}}

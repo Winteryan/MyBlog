@@ -1,10 +1,16 @@
 {{template "backstage/backstagebase.html" .}}
-{{define "head"}}
-<title>MyBlog</title>
+{{define "bread"}}
+	<div class="row">
+		<div class="col-lg-12">
+			<ol style="background-color: #dcdcdc" class="breadcrumb">
+				<li><i class="fa fa-home"></i><a href="index.html">HOME</a></li>
+				<li><i class="fa fa-bars"></i>BLOG</li>
+				<li><i class="fa fa-square-o"></i>ADD</li>
+			</ol>
+		</div>
+	</div>
 {{end}}
 {{define "body"}}
-                   
-<body class="sub-page">	
 	<!-- /////////////////////////////////////////Content -->
 	<div id="page-content" class="single-page">
 		<div class="container">
@@ -13,79 +19,122 @@
 					<article>
 						<div class="art-content">
 							<div class="row">
-								<div class="col-md-2 box-item">
-									
-								</div>
 								<div class="col-md-8">
+									{{if .blog}}
+									<h3 style="text-align: center">View&<a id="edit" style="color:black">Edit</a>  Article</h3>
+									{{else}}
 									<h3 style="text-align: center">Add Article</h3>
+									{{end}}
+									{{if .flag}}
+									<a style="display: none" id="flag">{{.flag}}</a>
+									{{end}}
 									{{if .flash.error}}
 						   				<h5 class="error">提示:{{.flash.error}}</h5>
 						    		{{end}}
-									<form name="form1" method="post" action="/addArticle" enctype="multipart/form-data">
+									{{if .blog}}
+									<form name="form1" id="form1" method="post" action="/updateArticle" enctype="multipart/form-data">
+									{{else}}
+									<form name="form1" id="form1" method="post" action="/addArticle" enctype="multipart/form-data">
+									{{end}}
 									<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
+													{{if .blog}}
+													<input type="text" class="form-control input-lg" name="title" id="title" placeholder="Title" value="{{.blog.Title}}" required="required" />
+													{{else}}
 													<input type="text" class="form-control input-lg" name="title" id="title" placeholder="Title" required="required" />
+													{{end}}
 												</div>
 											</div>
 									</div>
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
-												<input type="text" class="form-control input-lg" name="keyword" id="keyword" placeholder="Keyword" required="required" />
+													{{if .blog}}
+													<input type="text" class="form-control input-lg" name="keyword" id="keyword" placeholder="Keyword" value="{{.blog.Keywords}}" required="required" />
+													<input type="text" class="form-control input-lg" name="id" id="id" style="display:none" value="{{.blog.Id}}" />
+													{{else}}
+													<input type="text" class="form-control input-lg" name="keyword" id="keyword" placeholder="Keyword" required="required" />
+													{{end}}
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
+													{{if .blog}}
+													<input type="text" class="form-control input-lg" name="subject" id="subject" placeholder="Subject" value="{{.blog.Subject}}" required="required" />
+													{{else}}
 													<input type="text" class="form-control input-lg" name="subject" id="subject" placeholder="Subject" required="required" />
+													{{end}}
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-4">
 												<div class="form-group">
-													<select class="form-control input-lg" name="catalogid">
-													  <option value="1">工作</option>
-													  <option value="2">生活</option>
-													  <option value="3">技术</option>
-													  <option value="4">文章</option>
+													{{if .blog}}
+														<a id="catalogid" style="display:none">{{.blog.Catalogid}}</a>
+													{{end}}
+													<select class="form-control input-lg" id="catalogid">
+													  <option value="工作">工作</option>
+													  <option value="生活">生活</option>
+													  <option value="技术">技术</option>
+													  <option value="文章">文章</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-md-4">
-												<select class="form-control input-lg" name="type">
-												  <option value="1">原创</option>
-												  <option value="2">转载</option>
+												{{if .blog}}
+													<a id="type" style="display:none">{{.blog.Type}}</a>
+												{{end}}
+												<select class="form-control input-lg" id="type">
+												  <option value="原创">原创</option>
+												  <option value="转载">转载</option>
 												</select>
 											</div>
 											<div class="col-md-4">
-												<select class="form-control input-lg" name="status">
-												  <option value="1">公开</option>
-												  <option value="2">权限</option>
-												  <option value="3">私人</option>
+												{{if .blog}}
+													<a id="status" style="display:none">{{.blog.Status}}</a>
+												{{end}}
+												<select class="form-control input-lg" id="status">
+												  <option value="公开">公开</option>
+												  <option value="权限">权限</option>
+												  <option value="私人">私人</option>
 												</select>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
-												    <input id="file-0a" placeholder="Images" name="images" class="file" type="file" multiple data-max-file-count="1">
+													{{if .blog}}
+													<a id="imgurl" style="display:none">{{.blog.Imgurl}}</a>
+													{{end}}
+												    <input id="file-0a" placeholder="Images" name="images" class="file" type="file"  multiple data-max-file-count="1">
 												</div>		
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
+												{{if .blog}}
 													<textarea name="introduction" id="introduction" class="form-control" rows="4" cols="25" required="required"
+													placeholder="Introduction" style="height: 90px;">{{.blog.Introduction}}</textarea>
+												{{else}}
+												<textarea name="introduction" id="introduction" class="form-control" rows="4" cols="25" required="required"
 													placeholder="Introduction" style="height: 90px;"></textarea>
+												{{end}}	
 												</div>	
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
+												{{if .blog}}
 													<textarea name="content" id="content" class="form-control" rows="4" cols="25" required="required"
+													placeholder="Content" style="height: 190px;">{{.blog.Content}}</textarea>
+												{{else}}
+												<textarea name="content" id="content" class="form-control" rows="4" cols="25" required="required"
 													placeholder="Content" style="height: 190px;"></textarea>
+												{{end}}	
 												</div>						
 												<button type="submit" class="btn btn-primary" name="submitcontact" id="submitcontact" style="width:100%">Submit</button>
 											</div>
@@ -99,10 +148,46 @@
 			</div>
 		</div>
 	</div>
-</body>
 <script>
-$("#file-0a").fileinput({
-		showUpload: false
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+	$("#file-0a").fileinput({
+		showUpload: false,
+		allowedFileExtensions : ['jpg', 'png','gif'],
+		initialPreviewAsData: true,  
+        initialPreviewFileType: 'image',  
+		initialPreview: $("#imgurl").text(),
 	});
+$(document).ready(function(){
+	$("#catalogid option").each(function(){
+		<!--console.log($("#catalogid").text(),$(this).text());-->
+		if($(this).text()== $("#catalogid").text()){
+			$(this).attr("selected",true);
+		}
+	});
+	$("#type option").each(function(){
+<!--		console.log($("#catalogid").text(),$(this).text());-->
+		if($(this).text()== $("#type").text()){
+			$(this).attr("selected",true);
+		}
+	});
+	$("#status option").each(function(){
+<!--		console.log($("#status").text(),$(this).text());-->
+		if($(this).text()== $("#status").text()){
+			$(this).attr("selected",true);
+		}
+	});
+	var flag=$("#flag").text();
+	var id = $("#id").attr("value")
+	console.log(flag);
+	if(flag=="1"){
+		$("button,option,input,select,textarea,input,span").attr("disabled","disabled");
+		$("#edit").attr("style","color:blue;text-decoration:underline");
+		$("#edit").attr("href","/updateArticle?id="+id);
+	}
+});
 </script>
 {{end}}

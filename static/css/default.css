@@ -229,3 +229,8 @@ a:hover,a:focus{color:#74777b;}
         font-size:1.2em;
     }
 }
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    height: 34px;
+}

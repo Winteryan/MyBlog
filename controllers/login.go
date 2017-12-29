@@ -33,9 +33,9 @@ func (c *LoginController) Login() {
 		if total > 0 {
 			user := userlist[0]
 			authkey := libs.Md5([]byte(c.getClientIp() + "|" + user.Password + user.Personalkey))
-			c.Ctx.SetCookie("auth", strconv.Itoa(user.Id)+"|"+authkey, 7*86400)
+			c.Ctx.SetCookie("auth", strconv.Itoa(user.Id)+"|"+authkey, 3600)
 			fmt.Println(beego.URLFor("AddarticleController.Add") + "+++++++++++++++++++++++++")
-			c.redirect(beego.URLFor("AddarticleController.Add"))
+			c.redirect(beego.URLFor("BackstageController.Index"))
 		} else {
 			flash.Error("输入信息有误，或账户已失效")
 			c.Data["error"] = "输入信息有误，或账户已失效"

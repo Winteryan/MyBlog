@@ -30,7 +30,7 @@
 			
 			<h2 class="txt-center">登 录</h2>
 			{{if .error}}
-   				<h5 class="color:red">提示:{{.error}}</h5>
+   				<h5 class="error">提示:{{.error}}</h5>
     		{{end}}
 			<form action="/login" method="post">
 				<input class="input" style="margin-bottom:20px" type="text" name="username" placeholder="用户名" required="">

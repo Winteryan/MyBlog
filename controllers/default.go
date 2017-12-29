@@ -13,7 +13,7 @@ type MainController struct {
 func (c *MainController) Get() {
 
 	filters := make([]interface{}, 0)
-	filters = append(filters, "type", 1)
+	filters = append(filters, "type", "1")
 	r1, total := models.BlogGetList(1, 4, filters...)
 	r2, _ := models.BlogGetList(2, 4, filters...)
 	r3, _ := models.BlogGetList(3, 4, filters...)

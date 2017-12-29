@@ -14,9 +14,9 @@ type Blog struct {
 	Content      string
 	Introduction string
 	Lastupdate   time.Time
-	Type         int
-	Status       int
-	Views        int
+	Type         string
+	Status       string
+	Views        string
 	Imgurl       string
 	Subject      string
 	Createtime   time.Time `orm:"auto_now_add;type(datetime)"`
@@ -39,7 +39,8 @@ func BlogGetList(page, pageSize int, filters ...interface{}) ([]*Blog, int64) {
 	offset := (page - 1) * pageSize
 	list := make([]*Blog, 0)
 	query := orm.NewOrm().QueryTable(TableName("blog"))
-	if len(filters) > 0 {
+	//	fmt.Println(len(filters))
+	if len(filters) > 1 {
 		l := len(filters)
 		for k := 0; k < l; k += 2 {
 			query = query.Filter(filters[k].(string), filters[k+1])
@@ -53,4 +54,11 @@ func BlogGetList(page, pageSize int, filters ...interface{}) ([]*Blog, int64) {
 
 func BlogAdd(a *Blog) (int64, error) {
 	return orm.NewOrm().Insert(a)
+}
+
+func (a *Blog) Update(fields ...string) error {
+	if _, err := orm.NewOrm().Update(a, fields...); err != nil {
+		return err
+	}
+	return nil
 }
