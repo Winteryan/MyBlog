@@ -75,10 +75,10 @@
 														<a id="catalogid" style="display:none">{{.blog.Catalogid}}</a>
 													{{end}}
 													<select class="form-control input-lg" id="catalogid">
-													  <option value="工作">工作</option>
-													  <option value="生活">生活</option>
-													  <option value="技术">技术</option>
-													  <option value="文章">文章</option>
+													  <option value="work">work</option>
+													  <option value="life">life</option>
+													  <option value="technique">technique</option>
+													  <option value="article">article</option>
 													</select>
 												</div>
 											</div>
@@ -87,8 +87,8 @@
 													<a id="type" style="display:none">{{.blog.Type}}</a>
 												{{end}}
 												<select class="form-control input-lg" id="type">
-												  <option value="原创">原创</option>
-												  <option value="转载">转载</option>
+												  <option value="original">original</option>
+												  <option value="reproduction">reproduction</option>
 												</select>
 											</div>
 											<div class="col-md-4">
@@ -96,9 +96,9 @@
 													<a id="status" style="display:none">{{.blog.Status}}</a>
 												{{end}}
 												<select class="form-control input-lg" id="status">
-												  <option value="公开">公开</option>
-												  <option value="权限">权限</option>
-												  <option value="私人">私人</option>
+												  <option value="public">public</option>
+												  <option value="protected">protected</option>
+												  <option value="private">private</option>
 												</select>
 											</div>
 										</div>
@@ -128,13 +128,13 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
-												{{if .blog}}
-													<textarea name="content" id="content" class="form-control" rows="4" cols="25" required="required"
-													placeholder="Content" style="height: 190px;">{{.blog.Content}}</textarea>
-												{{else}}
-												<textarea name="content" id="content" class="form-control" rows="4" cols="25" required="required"
-													placeholder="Content" style="height: 190px;"></textarea>
-												{{end}}	
+													<div id="txtdiv" style="height:300px;">
+													</div>
+													{{if .blog}}
+													<textarea name="content" id="content" style="display:none" >{{.blog.Content}}</textarea>
+													{{else}}
+													<textarea name="content" id="content" style="display:none" ></textarea>
+													{{end}}
 												</div>						
 												<button type="submit" class="btn btn-primary" name="submitcontact" id="submitcontact" style="width:100%">Submit</button>
 											</div>
@@ -149,6 +149,25 @@
 		</div>
 	</div>
 <script>
+
+    $(function(){
+        //初始化编辑器
+        editor = new wangEditor("txtdiv");
+        editor.create();
+        var text = $("#content").text();
+		editor.$txt.html(text)
+		var flag=$("#flag").text();
+		if(flag=="1"){
+			editor.disable();
+		}
+        //内容修改事件，此处做的是实时展示实际效果
+        editor.onchange = function(){
+            //获取editor的html值
+            var html = editor.$txt.html();
+			$("#content").text(html)
+        }
+    })
+
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
