@@ -8,6 +8,7 @@ import (
 
 type Blog struct {
 	Id           int
+	Auth         string
 	Title        string
 	Keywords     string
 	Catalogid    string

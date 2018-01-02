@@ -5,7 +5,7 @@
 			<ol style="background-color: #dcdcdc" class="breadcrumb">
 				<li><i class="fa fa-home"></i><a href="index.html">HOME</a></li>
 				<li><i class="fa fa-bars"></i>BLOG</li>
-				<li><i class="fa fa-square-o"></i>ADD</li>
+				<li><i class="fa fa-reorder"></i>ADD</li>
 			</ol>
 		</div>
 	</div>
@@ -47,6 +47,17 @@
 												</div>
 											</div>
 									</div>
+									<div class="row">
+											<div class="col-md-12">
+									<div class="form-group">
+													{{if .blog}}
+													<input type="text" class="form-control input-lg" name="auth" id="auth" placeholder="Author" value="{{.blog.Auth}}" required="required" />
+													{{else}}
+													<input type="text" class="form-control input-lg" name="auth" id="auth" placeholder="Author" required="required" />
+													{{end}}
+												</div>
+										</div>
+									</div>
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
@@ -74,7 +85,7 @@
 													{{if .blog}}
 														<a id="catalogid" style="display:none">{{.blog.Catalogid}}</a>
 													{{end}}
-													<select class="form-control input-lg" id="catalogid">
+													<select class="form-control input-lg" id="catalogid" name="catalogid">
 													  <option value="work">work</option>
 													  <option value="life">life</option>
 													  <option value="technique">technique</option>
@@ -86,7 +97,7 @@
 												{{if .blog}}
 													<a id="type" style="display:none">{{.blog.Type}}</a>
 												{{end}}
-												<select class="form-control input-lg" id="type">
+												<select class="form-control input-lg" id="type" name="type">
 												  <option value="original">original</option>
 												  <option value="reproduction">reproduction</option>
 												</select>
@@ -95,7 +106,7 @@
 												{{if .blog}}
 													<a id="status" style="display:none">{{.blog.Status}}</a>
 												{{end}}
-												<select class="form-control input-lg" id="status">
+												<select class="form-control input-lg" id="status" name="status">
 												  <option value="public">public</option>
 												  <option value="protected">protected</option>
 												  <option value="private">private</option>

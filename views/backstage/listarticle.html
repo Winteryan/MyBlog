@@ -5,7 +5,7 @@
 			<ol style="background-color: #dcdcdc" class="breadcrumb">
 				<li><i class="fa fa-home"></i><a href="index.html">HOME</a></li>
 				<li><i class="fa fa-bars"></i>BLOG</li>
-				<li><i class="fa fa-square-o"></i>LIST</li>
+				<li><i class="fa fa-reorder"></i>LIST</li>
 			</ol>
 		</div>
 	</div>
@@ -19,6 +19,7 @@
 		<tr>
 			<th>INDEX</th>
 			<th>TITLE</th>
+			<th>AUTHOR</th>
 			<th>KEYWORDS</th>
 			<th>SUBJECT</th>
 			<th>INTRODUCTION</th>
@@ -35,6 +36,7 @@
 		<tr>
 			<td>{{$index}}</td>
 			<td>{{$elem.Title}}</td>
+			<td>{{$elem.Auth}}</td>
 			<td>{{$elem.Keywords}}</td>
 			<td>{{$elem.Introduction}}</td>
 			<td>{{$elem.Subject}}</td>

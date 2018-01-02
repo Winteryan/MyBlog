@@ -27,6 +27,7 @@ func (c *AddarticleController) Add() {
 		Blog.Catalogid = strings.TrimSpace(c.GetString("catalogid"))
 		Blog.Type = strings.TrimSpace(c.GetString("type"))
 		Blog.Status = strings.TrimSpace(c.GetString("status"))
+		Blog.Auth = strings.TrimSpace(c.GetString("auth"))
 		file, image, err := c.GetFile("images")
 		if err != nil {
 			flash.Error("保存Blog失败！原因：" + err.Error())
@@ -93,6 +94,7 @@ func (c *AddarticleController) Update() {
 		flash := beego.NewFlash()
 		oldblog, _ := models.GetBlogById(id)
 		Blog.Id = id
+		Blog.Auth = c.GetString("auth")
 		Blog.Catalogid = c.GetString("catalogid")
 		Blog.Content = c.GetString("content")
 		Blog.Introduction = c.GetString("introduction")
